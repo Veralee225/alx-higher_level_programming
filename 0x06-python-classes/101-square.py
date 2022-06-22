@@ -1,68 +1,98 @@
 #!/usr/bin/python3
-"""
-This module defines a Square class
-
-Its implements value and type checks for its attributes
-Attributes:
-    area
-    my_print
-"""
+"""Class for Node"""
 
 
-class Square:
-    """Square implementation
+class Node:
+    """ defines a node of a singly linked list
+        Attributes:
+            data (int): data
+            next_node (Node, optional): node
     """
-    def __init__(self, size=0, position=(0, 0)):
-        self.size = size
-        self.position = position
+
+    def __init__(self, data, next_node=None):
+        """Initialize Node
+        args:
+            data (int): data stored in node
+            next_node (Node): next node
+        """
+        self.data = data
+        self.next_node = next_node
+
+    @property
+    def data(self):
+        """data getter
+        returns:
+            data (int)
+        """
+        return self.__data
+
+    @data.setter
+    def data(self, value):
+        """data setter
+        args:
+            value (int): value to set
+        returns:
+            None
+        """
+        if type(value) != int:
+            raise TypeError("data must be an integer")
+        self.__data = value
+
+    @property
+    def next_node(self):
+        """data getter
+        returns:
+            data (int)
+        """
+        return self.__next_node
+
+    @next_node.setter
+    def next_node(self, value):
+        """data setter
+        args:
+            value (Node): value to set
+        returns:
+            None
+        """
+        if not isinstance(value, Node) and value is not None:
+            raise TypeError("next_node must be a Node object")
+        self.__next_node = value
+
+
+class SinglyLinkedList:
+    """Singly linked list class
+    """
+
+    def __init__(self):
+        """Initialize linked list"""
+        self.__head = None
+
+    def sorted_insert(self, value):
+        """insert node in coorect sorted position
+        args:
+            value (int): value for new node
+        """
+        new = Node(value)
+        if self.__head is None:
+            new.next_node = None
+            self.__head = new
+        elif self.__head.data > value:
+            new.next_node = self.__head
+            self.__head = new
+        else:
+            tmp = self.__head
+            while (tmp.next_node is not None and
+                    tmp.next_node.data < value):
+                tmp = tmp.next_node
+
+            new.next_node = tmp.next_node
+            tmp.next_node = new
 
     def __str__(self):
-
-        txt = ''
-        if (self.__size == 0):
-            pass
-        else:
-            for i in range(self.position[1]):
-                txt += '\n'
-
-            for i in range(self.size):
-                txt += ' ' * self.position[0] + '#' * self.size
-
-        return txt
-
-    @property
-    def size(self):
-        return self.__size
-
-    @size.setter
-    def size(self, size):
-        if type(size) != int:
-            raise TypeError('size must be an integer')
-        elif size < 0:
-            raise ValueError('size must be >= 0')
-        self.__size = size
-
-    def area(self):
-        """calculates the square area
-        """
-        return (self.size ** 2)
-
-    def my_print(self):
-        """prints a square  with the corresponding size
-        """
-        print(self.__str__())
-
-    @property
-    def position(self):
-        return self.__position
-
-    @position.setter
-    def position(self, position):
-        if type(position) != tuple or \
-            len(position) != 2 or \
-            not all(isinstance(el, int) for el in position) or \
-                not all(el >= 0 for el in position):
-
-            raise TypeError('position must be a tuple of 2 positive integers')
-
-        self.__position = position
+        """Define the print() representation of a SinglyLinkedList."""
+        values = []
+        tmp = self.__head
+        while tmp is not None:
+            values.append(str(tmp.data))
+            tmp = tmp.next_node
+        return ('\n'.join(values))

@@ -2,7 +2,7 @@
 
 ## 0-run
 0. Write a shell script that runs a python script.
-- The python ffile name will be saved in the environment variable *$PYFILE*
+- The python file name will be saved in the environment variable *$PYFILE*
 
 ## 1-run_inline
 1. Write a shell script that runs python code.

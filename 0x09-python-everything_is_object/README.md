@@ -87,7 +87,7 @@
 >>> print(l1 is l2)
 ```
 
-# 12. And with a list, is it really equal
+## 12. And with a list, is it really equal
 
 - What do these 3 lines print?
 ```
@@ -207,8 +207,12 @@ a = ()
 ```
 a = (1,2)
 ```
-a = (1, 2)
-```
+
 - Is *a* a tuple? Answer with Yes or No.
 
 ## 22. Tuple or not?
+```
+a = (1)
+```
+Is *a* a tuple? Answer with *Yes* or *No*
+

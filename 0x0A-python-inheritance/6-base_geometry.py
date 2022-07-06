@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""
-This module implements an object skeleton for BaseGeometry
-"""
+"""This module defines an empty class BAseGeometry"""
 
 
 class BaseGeometry:
-    """skeleton
-    """
-    pass
+    """A class with a public attribute area"""
+
+    def area(self):
+        """Raises an exception when called"""
+        raise Exception("area() is not implemented")

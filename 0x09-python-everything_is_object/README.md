@@ -216,3 +216,114 @@ a = (1)
 ```
 Is *a* a tuple? Answer with *Yes* or *No*
 
+## 23. Tuple or not?
+
+```
+a = (1, )
+```
+Is *a* a tuple? Answer with *Yes* or *No*
+
+## 24. Who I am?
+What does this script print?
+
+```
+a = (1)
+b = (1)
+a is b
+```
+
+## 25. Tuple or not
+What does this script print?
+```
+a = (1, 2)
+b = (1, 2)
+a is b
+```
+
+## 26. Empty is not empty
+What does this script print?
+```
+a = ()
+b = ()
+a is b
+```
+
+## 27. Still the same
+```
+>>> id(a)
+139926795932424
+>>> a
+[1, 2, 3, 4]
+>>> a = a + [5]
+>>> id(a)
+```
+
+Will the last line of this script print *139926795932424*? Answer with *Yes* or *No*.
+
+## 28. Same or not?
+```
+>>> a
+[1, 2, 3]
+>>> id (a)
+139926795932424
+>>> a += [4]
+>>> id(a)
+```
+
+Will the last line of this script print *139926795932424* ? Answer with *Yes* or *No*.
+
+## 29. #pythonic
+
+Write a function *magic_string()* that returns a string “BestSchool”* n times the number of the iteration (see code):
+
+- Format: see example
+- Your file should be maximum 4-line long (no documentation needed)
+- You are not allowed to import any module
+
+```
+guillaume@ubuntu:~/0x09$ cat 100-main.py
+#!/usr/bin/python3
+magic_string = __import__('100-magic_string').magic_string
+
+for i in range(10):
+    print(magic_string())
+
+guillaume@ubuntu:~/0x09$ ./100-main.py | cat -e
+BestSchool$
+BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+guillaume@ubuntu:~/0x09$ wc -l 100-magic_string.py 
+4 100-magic_string.py
+guillaume@ubuntu:~/0x09$
+```
+
+No test cases needed
+
+## 30. Low memory cost
+- Write a class *LockedClass* with no class or object attribute, that prevents the user from dynamically creating new instance attributes, except if the new instance attribute is called *first_name*.
+
+- You are not allowed to import any module.
+
+```
+guillaume@ubuntu:~/0x09$ cat 101-main.py
+#!/usr/bin/python3
+LockedClass = __import__('101-locked_class').LockedClass
+
+lc = LockedClass()
+lc.first_name = "John"
+try:
+    lc.last_name = "Snow"
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, e))
+
+guillaume@ubuntu:~/0x09$ ./101-main.py
+[AttributeError] 'LockedClass' object has no attribute 'last_name'
+guillaume@ubuntu:~/0x09$ 
+```

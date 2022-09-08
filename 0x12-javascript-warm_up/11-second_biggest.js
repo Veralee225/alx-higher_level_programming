@@ -1,12 +1,20 @@
 #!/usr/bin/node
-let args = process.argv.slice(2).map((x) => {
-    return parseInt(x);
-  });
-  
-  if (args.length <= 1) {
-    console.log(0);
-  } else {
-    console.log(args.sort((a, b) => {
-      return b - a;
-    })[1]);
+
+function second (myArray) {
+  if (myArray.length === 2 || myArray.length === 3) { return (0); }
+
+  let max = Number(myArray[2]);
+  let secondMax = 0;
+
+  for (let i = 3; i < myArray.length; i++) {
+    if (Number(myArray[i]) > max) {
+      secondMax = max;
+      max = Number(myArray[i]);
+    } else if (Number(myArray[i]) > secondMax) {
+      secondMax = Number(myArray[i]);
+    }
   }
+  return (secondMax);
+}
+
+console.log(second(process.argv));

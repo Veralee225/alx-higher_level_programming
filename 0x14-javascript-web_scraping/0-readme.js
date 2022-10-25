@@ -2,9 +2,9 @@
 // This script that reads and prints the content of a file
 
 const file = process.argv[2];
-const fs = require('fs');
+import { readFile } from 'fs';
 
-fs.readFile(file, 'utf8', (error, data) => {
+readFile(file, 'utf8', (error, data) => {
   if (error) {
     console.log(error);
   } else {

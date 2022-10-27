@@ -1,3 +1,5 @@
+//Write a Javascript that adds, remove and clear LI elements from a list when the user clicks
+
 const $ = window.$;
 
 $(document).ready(function () {

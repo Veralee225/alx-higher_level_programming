@@ -1,3 +1,5 @@
+//Write a Javascript script that fetches and prints how to say "Hello" depending on the language
+
 const $ = window.$;
 
 $(document).ready(function () {
